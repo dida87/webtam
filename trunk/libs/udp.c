@@ -2,7 +2,7 @@
 #include "udp.h"
 
 
-int udp_socket_init(char* host, char*port) {
+int udp_socket_init(char*port) {
 	//code init socket here
 	//return sockfd
 }

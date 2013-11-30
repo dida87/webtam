@@ -24,7 +24,7 @@ type struct {
 	char data[BUFF_SIZE];
 } Message;
 
-int udp_socket_init(char *host, char * port);
+int udp_socket_init(char * port);
 int send_msg(int sockfd, Message message);
 int received_msg(int sockfd, Message);
 

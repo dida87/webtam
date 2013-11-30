@@ -1,5 +1,3 @@
-#ifndef UDP_H
-#define UDP_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,21 +12,20 @@
 
 #define BUFF_SIZE 1024
 
-type struct {
+typedef struct {
 	int id;
-	char[12] destAddress;
+	char destAddress[12];
 } MessageHeader;
 
-type struct {
+typedef struct {
 	MessageHeader messageHeader;
 	char data[BUFF_SIZE];
 } Message;
 
-int udp_socket_init(char * port);
-int send_msg(int sockfd, Message message);
+int udp_socket_init(char * port, struct sockaddr_in servaddr);
+int send_msg(int sockfd, Message message, struct sockaddr_in servaddr);
 int received_msg(int sockfd, Message);
 
-#endif
 
 
 

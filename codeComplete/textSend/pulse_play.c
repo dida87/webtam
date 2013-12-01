@@ -45,8 +45,9 @@ int receivedText()
 		printf("r=%d\n",r);
 	} else { 
 
-		printf("read=%d\n",r);
 		int i;
+		printf("\nread=%d\n",r);
+		printf("size of buff %d \n", sizeof(buf));
 		if(buf)
 			if(strlen(buf)){
 				//buf[r]='\0';

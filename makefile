@@ -1,7 +1,3 @@
-all: all.o
-	gcc -Wall -o pPlay udp.o pulsePlay/pulsePlay.c
-all.o:
-	cd libs
-	gcc -Wall -c libs/udp.c
-clean: 
-	rm *.o pPlay
+rm -f pulse_play pulse_record
+gcc  -o pulse_play pulse_play.c -lpulse -lpulse-simple
+gcc  -o pulse_record pulse_record.c -lpulse -lpulse-simple

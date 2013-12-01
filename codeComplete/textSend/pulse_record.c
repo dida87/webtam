@@ -34,17 +34,14 @@ void send_text()
 {
 	while(1){
 		char buf[BUFSIZE];
-		//scanf("%s", &buf);
 		fflush(stdin);
 		gets(buf);
-	//	buf[strlen(buf)]='\0';
-		printf("input is %s",buf);
 		if(strlen(buf)>0)
 		{
 			n = sendto(sockfd,buf,strlen(buf),0,(struct sockaddr *)&servaddr,sizeof(servaddr));
-//			printf("\n %d byte sent\n",n);
 		}
-		//bzero(&buf,BUFSIZE);
+		 bzero(&buf,BUFSIZE);
+		 sendto(sockfd,buf,strlen(buf),0,(struct sockaddr *)&servaddr,sizeof(servaddr));
 	}
 
 

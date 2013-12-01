@@ -43,11 +43,11 @@ int receivedText()
 	int r;
 	bzero(&buf, BUFSIZE);
 	if((r=recvfrom(sockfd,buf,BUFSIZE,0,NULL,NULL)) <= 0) {
-		printf("r=%d\n",r);
+	//	printf("r=%d\n",r);
 	} else { 
 
 		int i;
-		printf("\nread=%d\n",r);
+	//	printf("\nread=%d\n",r);
 		printf("len of text  %d \n", strlen(buf));
 		if(buf)
 			if(strlen(buf)){

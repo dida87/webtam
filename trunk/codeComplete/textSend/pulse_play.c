@@ -41,13 +41,15 @@ int receivedText()
 {	
 	//read data udp
 	int r;
+	bzero(&buf, BUFSIZE);
 	if((r=recvfrom(sockfd,buf,BUFSIZE,0,NULL,NULL)) <= 0) {
 		printf("r=%d\n",r);
 	} else { 
 
 		int i;
 		printf("\nread=%d\n",r);
-		printf("size of buff %d \n", sizeof(buf));
+		printf("size of buff %d \n", strlen(buf));
+		printf("%c", buf[0]);
 		if(buf)
 			if(strlen(buf)){
 				//buf[r]='\0';

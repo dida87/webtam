@@ -42,6 +42,7 @@ void send_text()
 		if(strlen(buf)>0)
 		{
 			n = sendto(sockfd,buf,strlen(buf),0,(struct sockaddr *)&servaddr,sizeof(servaddr));
+//			printf("\n %d byte sent\n",n);
 		}
 		//bzero(&buf,BUFSIZE);
 	}

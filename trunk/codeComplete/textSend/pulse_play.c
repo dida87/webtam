@@ -48,14 +48,10 @@ int receivedText()
 
 		int i;
 		printf("\nread=%d\n",r);
-		printf("size of buff %d \n", strlen(buf));
-		printf("%c", buf[0]);
+		printf("len of text  %d \n", strlen(buf));
 		if(buf)
 			if(strlen(buf)){
-				//buf[r]='\0';
-				//printf("%s", buf);
-				for (i=0; i< r; i++)
-					printf("%c", buf[i]);
+				printf("%s", buf);
 			}
 	}
 }

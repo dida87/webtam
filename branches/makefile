@@ -1,0 +1,5 @@
+all: all.o
+	gcc -o pulsePlay pulsePlay.c udp.o -lpulse -lpulse-simple
+	gcc -o pulseRecord pulseRecord.c udp.o -lpulse -lpulse-simple
+all.o:
+	gcc -c udp.c

@@ -13,8 +13,9 @@
 #define UDP_PORT 32000
 
 int sockfd,n;
-struct sockaddr_in servaddr;
+struct sockaddr_in servaddr,cliaddr;
 socklen_t len;
+char mesg[1000];
 
 
 
@@ -50,10 +51,11 @@ int record_and_send()
 		}
 		
 
-	// sent to server
+	printf("len=%d  \n",len);
+		// sent to server
 	int nbSent = 0;
 	nbSent = sendto(sockfd,buf,sizeof(buf),0,(struct sockaddr *)&servaddr,sizeof(servaddr));
-	//printf("send to %d", nbSent);
+	printf("send to %d", nbSent);
 	}
 
 	ret = 0;
@@ -92,7 +94,7 @@ void read_file_and_send()
 		if(byte_read > 0)
 		{
 			n = sendto(sockfd,buf,byte_read,0,(struct sockaddr *)&servaddr,sizeof(servaddr));
-			printf("read byte = %d byte sent %d\n", byte_read,n);
+//			printf("read byte = %d byte sent %d\n", byte_read,n);
 		}
 	}
 
@@ -101,13 +103,12 @@ void read_file_and_send()
 
 int main(int argc, char**argv)
 {
-	char* host;
+	char *host;
 	int port;
-	
-	host = argv[1];
-	port = UDP_PORT;
+	host = argv[2];
+	port=atoi(argv[3]);
 
-	init_socket(host,port);
+	init_socket(host, port);
 	
 	if(strcmp(argv[1],"-f")==0) {
 		read_file_and_send();

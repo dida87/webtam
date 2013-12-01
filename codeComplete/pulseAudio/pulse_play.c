@@ -19,7 +19,7 @@ int sockfd,n;
 struct sockaddr_in servaddr,cliaddr;
 
 
-void init_socket_udp()
+void init_socket_udp(int port)
 {
 	printf("Setup socket for listening...\n");
 
@@ -29,10 +29,10 @@ void init_socket_udp()
 	bzero(&servaddr,sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_addr.s_addr=htonl(INADDR_ANY);
-	servaddr.sin_port=htons(UDP_PORT);
+	servaddr.sin_port=htons(port);
 
 	bind(sockfd,(struct sockaddr *)&servaddr,sizeof(servaddr));
-	printf("Socket is ready to listen on port %d\n",UDP_PORT);
+	printf("Socket is ready to listen on port %d\n",port);
 }
 
 
@@ -110,7 +110,10 @@ finish:
 
 int main(int argc, char*argv[]) {
 	char *host;
-	char *port;
+	int port;
+
+	port = atoi(argv[2]);
+	
 	int isRecord = 1;
 	if(strcmp(argv[1],"-f")==0) {
 		isRecord = 0;
@@ -118,6 +121,6 @@ int main(int argc, char*argv[]) {
 	if(strcmp(argv[1],"-r")==0) {
 		isRecord = 1;
 	}	
-	init_socket_udp();
+	init_socket_udp(port);
 	playback(isRecord);
 }
